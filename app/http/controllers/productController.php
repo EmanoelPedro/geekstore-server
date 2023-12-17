@@ -9,13 +9,15 @@ class productController extends Controller
 {
     public function index()
     {
-        $products = (new Product)->find()->order('DESC')->limit(20);
+        $products = (new Product)->find()->order('DESC')->limit(20)->fetch(true);
+        var_dump($products);
     }
 
     public function store()
     {
-        var_dump($this->request->all());    
-        var_dump($_POST);
+        $product = new Product;
+        $product->name = $this->request->input('name');
+    var_dump($this->request->files());
     }
 
     public function update()
